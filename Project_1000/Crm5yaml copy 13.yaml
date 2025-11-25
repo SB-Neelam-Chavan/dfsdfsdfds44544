@@ -1,0 +1,475 @@
+openapi: 3.1.0
+x-stoplight:
+  id: mxnet5k0h374u
+info:
+  title: Crm
+  version: '1.0'
+  license:
+    url: 'https://opensource.org/licenses/MIT'
+    name: MIT
+  contact:
+    email: dataops@flex.one
+    name: Dataops
+    url: 'https://www.flex.one'
+  description: Endpoints for Crm Integrations
+  summary: Crm Integrations
+servers:
+  - url: 'http://localhost:3000'
+    description: Local
+  - url: 'https://platform.flexbase.dev'
+    description: Development
+  - url: 'https://platform.flex.one'
+    description: Production
+paths:
+  '/crm/hubspot/contacts/persons/{personId}/sync':
+    parameters:
+      - $ref: '#/components/parameters/personId'
+    get:
+      summary: Sync Person Data to Hubspot Contacts
+      x-stoplight:
+        id: afxxjj3ws8hk3
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotContactsPersonIdSync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: ./models/HubspotContact.yaml
+                    x-stoplight:
+                      id: p3s880f1zns21
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: 00gkdlsfk1io3
+      description: ''
+  '/crm/hubspot/companies/businesses/{businessId}/sync':
+    parameters:
+      - $ref: '#/components/parameters/businessId'
+    get:
+      summary: Sync Business Data to Hubspot Contacts
+      x-stoplight:
+        id: cprbfbafe417d
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotCompaniesBusinessIdSync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: ./models/HubspotCompany.yaml
+                    x-stoplight:
+                      id: rj8a70vgbfus3
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: ufkc1t4lr6kd9
+      description: ''
+  '/crm/hubspot/underwriting/businesses/{businessId}/sync':
+    parameters:
+      - $ref: '#/components/parameters/businessId'
+    get:
+      summary: Sync Business Data to Hubspot Underwriting
+      x-stoplight:
+        id: md3yq91ue444p
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotUnderwritingBusinessIdSync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: ./models/HubspotUnderwriting.yaml
+                    x-stoplight:
+                      id: iqn7kpk3qvj10
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: zz1t23nvp5705
+      description: ''
+  '/crm/hubspot/deals/businesses/{businessId}/sync':
+    parameters:
+      - $ref: '#/components/parameters/businessId'
+    get:
+      summary: Sync Business Data to Hubspot Deals
+      x-stoplight:
+        id: wyg7j73kyz3ov
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotDealsBusinessIdSync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: ./models/HubspotDeal.yaml
+                    x-stoplight:
+                      id: tybsjvcvs2uve
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: rcia4dkzn7wz9
+      description: ''
+  '/crm/hubspot/onboarding/businesses/{businessId}/sync':
+    parameters:
+      - $ref: '#/components/parameters/businessId'
+    get:
+      summary: Sync Business Data to Hubspot Onboarding
+      x-stoplight:
+        id: z59okffvakinb
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotOnboardingBusinessIdSync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: ./models/HubspotOnboarding.yaml
+                    x-stoplight:
+                      id: 99pm4v564wihe
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: s85egm8bspz2o
+      description: ''
+  '/crm/hubspot/account-management/businesses/{businessId}/sync':
+    parameters:
+      - $ref: '#/components/parameters/businessId'
+    get:
+      summary: Sync Business Data to Hubspot Account Management
+      x-stoplight:
+        id: gmaaow5pjo9wl
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotAccountManagementBusinessIdSync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: ./models/HubspotAccountManagement.yaml
+                    x-stoplight:
+                      id: i52mnlsnc4fdi
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: ypw5v74ndei17
+      description: ''
+  '/crm/hubspot/monthly-spend/businesses/{businessId}/sync':
+    parameters:
+      - $ref: '#/components/parameters/businessId'
+    get:
+      summary: Sync Spend Data to Hubspot MonthlySpend
+      x-stoplight:
+        id: fcq0nvdu0o1d5
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotMonthlySpendBusinessIdSync
+      parameters:
+        - $ref: '#/components/parameters/startDate'
+        - $ref: '#/components/parameters/endDate'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: ./models/HubspotMonthlySpend.yaml
+                    x-stoplight:
+                      id: 9bk03oogndyf8
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: gmqmhol941qj7
+      description: ''
+  /crm/hubspot/contacts/syncAll:
+    parameters: []
+    get:
+      summary: Sync All Persons Data to Hubspot Contacts
+      x-stoplight:
+        id: b2y5tbvj28e3w
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotContactsSyncAll
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: 8qcr6td4ay8aw
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: 56wgzu72t46rd
+                    items:
+                      $ref: ./models/HubspotContact.yaml
+                      x-stoplight:
+                        id: 4zp0oa65ju4vi
+      description: ''
+  /crm/hubspot/companies/syncAll:
+    parameters: []
+    get:
+      summary: Sync All Businesses Data to Hubspot Companies
+      x-stoplight:
+        id: bphnzjlu4bx3b
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotCompaniesSyncAll
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: aprv4el8s2qfb
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: t3ub62716lse3
+                    items:
+                      $ref: ./models/HubspotCompany.yaml
+                      x-stoplight:
+                        id: uniux2axfdtq9
+      description: ''
+  /crm/hubspot/underwriting/syncAll:
+    parameters: []
+    get:
+      summary: Sync All Businesses Data to Hubspot Underwriting
+      x-stoplight:
+        id: h9jo8mocphem2
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotUnderwritingSyncAll
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: ovye4qif3aucr
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: dace1v237qqno
+                    items:
+                      $ref: ./models/HubspotUnderwriting.yaml
+                      x-stoplight:
+                        id: jjjxpa8dcgd4h
+      description: ''
+  /crm/hubspot/deals/syncAll:
+    parameters: []
+    get:
+      summary: Sync All Businesses Data to Hubspot Deals
+      x-stoplight:
+        id: ga8fphse2jbu3
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotDealsSyncAll
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: 6rlkv5k10130o
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: jxtv7bc8ehb7g
+                    items:
+                      $ref: ./models/HubspotDeal.yaml
+                      x-stoplight:
+                        id: mzxs4sjeonrqx
+      description: ''
+  /crm/hubspot/onboarding/syncAll:
+    parameters: []
+    get:
+      summary: Sync All Business Data to Hubspot Onboarding
+      x-stoplight:
+        id: u0jnmaowb48qt
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotOnboardingSyncAll
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: htht8rmei0fvy
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: o4q6q33rbzpoc
+                    items:
+                      $ref: ./models/HubspotOnboarding.yaml
+                      x-stoplight:
+                        id: uuaii32rwhske
+      description: ''
+  /crm/hubspot/account-management/syncAll:
+    parameters: []
+    get:
+      summary: Sync All Businesses Data to Hubspot Account Management
+      x-stoplight:
+        id: ctr8gdzfjjfon
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotAccountManagementSyncAll
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: gipmoi8yp8500
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: ygej0bpv19a3u
+                    items:
+                      $ref: ./models/HubspotAccountManagement.yaml
+                      x-stoplight:
+                        id: dmz3fjsu4wrvm
+      description: ''
+  /crm/hubspot/monthly-spend/syncAll:
+    parameters: []
+    get:
+      summary: Sync All Spend Data to Hubspot MonthlySpend
+      x-stoplight:
+        id: w5pkubtftwl64
+      tags:
+        - Hubspot
+      operationId: getCrmHubspotMonthlySpendSyncAll
+      parameters:
+        - $ref: '#/components/parameters/startDate'
+        - $ref: '#/components/parameters/endDate'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    $ref: ./models/PaginationMetadata.yaml
+                    x-stoplight:
+                      id: 5la6igs8268mm
+                  data:
+                    type: array
+                    x-stoplight:
+                      id: baclb4lnn0t2p
+                    items:
+                      $ref: ./models/HubspotMonthlySpend.yaml
+                      x-stoplight:
+                        id: k11slwql4j1et
+      description: ''
+components:
+  schemas: {}
+  securitySchemes:
+    token:
+      type: http
+      scheme: bearer
+  parameters:
+    personId:
+      name: personId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: The person identifier
+    businessId:
+      name: businessId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: The business identifier
+    startDate:
+      name: startDate
+      in: query
+      required: true
+      schema:
+        type: string
+        format: date
+      description: Minimum date to include in response
+    endDate:
+      name: endDate
+      in: query
+      required: true
+      schema:
+        type: string
+        format: date
+      description: Maximum date to include in response
+security:
+  - token: []
+tags:
+  - name: Crm
+    description: Crm
+  - name: Hubspot
+    description: Hubspot
+x-internal: true

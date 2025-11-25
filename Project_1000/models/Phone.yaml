@@ -1,0 +1,45 @@
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: Phone identifier
+        readOnly: true
+      value:
+        type: string
+        description: Phone number in E.164 format
+        pattern: '/^\+[1-9]\d{1,14}$/'
+        maxLength: 14
+      type:
+        type: string
+        description: A label indicating the phone's type
+        enum:
+          - work
+          - home
+          - mobile
+          - fax
+          - pager
+          - other
+      isPrimary:
+        type: boolean
+        description: Indicates if this is the preferred phone number or primary phone number
+        default: true
+      verificationDate:
+        type: string
+        format: date-time
+        description: The date this phone number was verified
+        readOnly: true
+      verificationMethod:
+        type: string
+        description: The method used to verify this phone number
+        readOnly: true
+      active:
+        type: boolean
+        description: A value indicating if the phone is enabled in the system
+    required:
+      - id
+      - value
+  - $ref: ./CoreModel.yaml
+title: Phone
+description: Represents a phone

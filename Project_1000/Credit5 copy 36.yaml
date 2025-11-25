@@ -1,0 +1,770 @@
+openapi: 3.1.0
+x-stoplight:
+  id: 6t1qmk26fsks2
+info:
+  title: Credit
+  version: '1.0'
+  summary: Credit
+  description: Credit path
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  contact:
+    name: Support
+    url: 'https://www.flex.one'
+    email: support@flex.one
+servers:
+  - url: 'https://platform.flex.one'
+    description: Production
+  - url: 'https://platform.flexbase.dev'
+    description: Development
+  - url: 'http://localhost:3000'
+    description: Local
+paths:
+  '/credit/cards/{cardId}/transaction/authorization':
+    parameters:
+      - schema:
+          type: string
+        name: cardId
+        in: path
+        required: true
+        description: The card identifier
+    post:
+      summary: Decision Approval for Credit Transaction Authorization
+      x-stoplight:
+        id: 15ng8uth6npqr
+      tags:
+        - Credit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - approved
+                properties:
+                  approved:
+                    type: boolean
+                    x-stoplight:
+                      id: e4d8kl8q9t0gb
+                  error:
+                    type: object
+                    x-stoplight:
+                      id: fi0adgppodjr6
+                    required:
+                      - code
+                      - message
+                    properties:
+                      code:
+                        type: string
+                        x-stoplight:
+                          id: j0918z52gnk3t
+                      message:
+                        type: string
+                        x-stoplight:
+                          id: xtbtwcov1knq3
+      operationId: decisionCreditTransactionAuthorization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - amount
+                - invoiceId
+                - correlationId
+                - personId
+              properties:
+                amount:
+                  type: number
+                  x-stoplight:
+                    id: 9ummz4xkd4z7p
+                invoiceId:
+                  type: string
+                  x-stoplight:
+                    id: c06ixa1zskg66
+                correlationId:
+                  type: string
+                  x-stoplight:
+                    id: d6skelkyscy13
+                personId:
+                  type: string
+                  x-stoplight:
+                    id: t78rjuwcn1ktq
+                mcc:
+                  type: string
+                  x-stoplight:
+                    id: vtg3slqzx74bx
+      description: Decision Approval for Credit Transaction Authorization
+  /credit/legacy/setLimit:
+    put:
+      summary: Set Credit Limit
+      responses:
+        '200':
+          $ref: '#/components/responses/LegacySetLimit'
+      operationId: credit-legacy-setLimit
+      x-internal: true
+      description: Allow an UNDERWRITER to manually set the Credit Limit on a Company
+      tags:
+        - Legacy
+      requestBody:
+        $ref: '#/components/requestBodies/LegacySetLimit'
+      x-stoplight:
+        id: gsgru5ymmmov8
+components:
+  schemas:
+    LegacySetLimit:
+      title: LegacySetLimit
+      x-stoplight:
+        id: hqo74e3ajpk70
+      type: object
+      properties:
+        userId:
+          type: string
+          x-stoplight:
+            id: xnv3tplv2j27p
+          format: uuid
+        companyId:
+          type: string
+          x-stoplight:
+            id: 5mdyac2i7wpc1
+          format: uuid
+        level:
+          type: integer
+          x-stoplight:
+            id: vgwsd44yuz78x
+        approved:
+          type: boolean
+          x-stoplight:
+            id: 1drzno9e0hrhs
+        maxLimit:
+          type: integer
+          x-stoplight:
+            id: oftjrv74hv69c
+        notes:
+          type: string
+          x-stoplight:
+            id: f3vvua9qf2kdc
+      required:
+        - maxLimit
+        - notes
+    ApiOnboardingCompany:
+      title: ApiOnboardingCompany
+      x-stoplight:
+        id: zzscbl7x6yyqq
+      type: object
+      properties:
+        id:
+          type: string
+        companyName:
+          type: string
+        doingBusinessAs:
+          type: string
+        taxId:
+          type: string
+        formationDate:
+          type: string
+        legalStructure:
+          type: string
+        website:
+          type: string
+        monthlyExpenditure:
+          type: string
+        phone:
+          type: string
+        address:
+          $ref: '#/components/schemas/ApiAddress'
+        owners:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiCompanyOwner'
+            x-stoplight:
+              id: pm89xu6m5nk5b
+        officers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiCompanyMemberBase'
+            x-stoplight:
+              id: y4el6z616eh21
+        financialInstitutions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiFinancialInstitution'
+            x-stoplight:
+              id: jv36kr3fv25fm
+        category:
+          type: string
+        annualRevenue:
+          type: string
+        averageMonthlyPayroll:
+          type: string
+        insuranceTypes:
+          type: array
+          items:
+            x-stoplight:
+              id: 0ghhp71dl6a4y
+            type: string
+        hasInsurance:
+          type: boolean
+        optedProducts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiOptedProduct'
+            x-stoplight:
+              id: kjxu2e1mgdy6k
+        creditLimit:
+          type: string
+        autopay:
+          $ref: '#/components/schemas/ApiCompanyAutopay'
+        formationState:
+          type: string
+        businessPurpose:
+          type: string
+        cashOnHand:
+          type: string
+        naicsCode:
+          type: string
+        reinvestTreasuryInterest:
+          type: boolean
+        primaryPlaidAccount:
+          type: string
+        companySpend:
+          type: string
+        companyType:
+          type: string
+        merchantCategory:
+          type: string
+        createdAt:
+          type: string
+        createdBy:
+          type: string
+        frozen:
+          type: boolean
+        frozenReason:
+          $ref: '#/components/schemas/ApiFrozenReason'
+        businessVertical:
+          $ref: '#/components/schemas/ApiBusinessVertical'
+        requestedCreditLimit:
+          type: string
+        earlypay:
+          $ref: '#/components/schemas/ApiEarlypay'
+        cashback:
+          $ref: '#/components/schemas/ApiCashback'
+        activated:
+          type: boolean
+        requestedDocuments:
+          type: array
+          items:
+            x-stoplight:
+              id: g8zdpqjis1ipt
+            type: string
+        riskGrade:
+          type: string
+        additionalInfo:
+          type: object
+        controlPerson:
+          type: string
+      required:
+        - id
+        - companyName
+        - doingBusinessAs
+        - taxId
+        - formationDate
+        - legalStructure
+        - website
+        - monthlyExpenditure
+        - phone
+        - address
+        - owners
+        - officers
+        - financialInstitutions
+        - category
+        - annualRevenue
+        - averageMonthlyPayroll
+        - insuranceTypes
+        - hasInsurance
+        - optedProducts
+        - autopay
+        - formationState
+        - businessPurpose
+        - cashOnHand
+        - naicsCode
+        - reinvestTreasuryInterest
+        - primaryPlaidAccount
+        - companySpend
+        - companyType
+        - merchantCategory
+        - createdBy
+        - requestedCreditLimit
+        - earlypay
+        - cashback
+        - activated
+        - requestedDocuments
+    ApiCompanyMemberBase:
+      title: ApiCompanyMemberBase
+      x-stoplight:
+        id: nl8rylkxpfjvi
+      type: object
+      properties:
+        id:
+          type: string
+        address:
+          type: string
+        addressLine2:
+          type: string
+        asOf:
+          type: string
+        authorizedSignatory:
+          type: boolean
+        byUser:
+          type: string
+        cellPhone:
+          type: string
+        city:
+          type: string
+        companyId:
+          type: string
+        completedInviteNewUsers:
+          type: boolean
+        completedOffboarding:
+          type: boolean
+        completedOnboarding:
+          type: boolean
+        country:
+          type: string
+        displayName:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        jobTitle:
+          type: string
+        kycPassed:
+          type: string
+        lastName:
+          type: string
+        mqUserToken:
+          type: string
+        phone:
+          type: string
+        postalCode:
+          type: string
+        profileDocId:
+          type: string
+        pushNotifTokens:
+          type: string
+        roles:
+          type: array
+          items:
+            x-stoplight:
+              id: x11geakogtcth
+            type: string
+        state:
+          type: string
+        status:
+          type: string
+        stpCardholderId:
+          type: string
+        stpPersonId:
+          type: string
+        username:
+          type: string
+        version:
+          type: number
+        tenantId:
+          type: string
+      required:
+        - id
+        - address
+        - addressLine2
+        - asOf
+        - authorizedSignatory
+        - byUser
+        - cellPhone
+        - city
+        - companyId
+        - completedInviteNewUsers
+        - completedOffboarding
+        - completedOnboarding
+        - country
+        - displayName
+        - email
+        - firstName
+        - jobTitle
+        - lastName
+        - mqUserToken
+        - phone
+        - postalCode
+        - profileDocId
+        - pushNotifTokens
+        - roles
+        - state
+        - status
+        - stpCardholderId
+        - stpPersonId
+        - username
+        - version
+        - tenantId
+    ApiCompanyOwner:
+      title: ApiCompanyOwner
+      x-stoplight:
+        id: l7f0x27yq3rpc
+      allOf:
+        - $ref: '#/components/schemas/ApiCompanyMemberBase'
+        - type: object
+          x-stoplight:
+            id: 87jg9syx2u0h5
+          properties:
+            ownershipPct:
+              type: number
+              x-stoplight:
+                id: tkdiq6oxxk1bd
+          required:
+            - ownershipPct
+    ApiAddress:
+      title: ApiAddress
+      x-stoplight:
+        id: anc57cbtutcjx
+      type: object
+      properties:
+        line1:
+          type: string
+          x-stoplight:
+            id: 9oe17phtsyu0e
+        line2:
+          type: string
+          x-stoplight:
+            id: ubl7p6r1jwj7b
+        city:
+          type: string
+          x-stoplight:
+            id: x9g1b651d0zvp
+        state:
+          type: string
+          x-stoplight:
+            id: fpzogm05zbm36
+        postalCode:
+          type: string
+          x-stoplight:
+            id: 0bnvjpd14snz1
+        country:
+          type: string
+          x-stoplight:
+            id: 8a6xa0glj7zfg
+      required:
+        - line1
+        - city
+        - state
+        - postalCode
+    ApiFinancialInstitution:
+      title: ApiFinancialInstitution
+      x-stoplight:
+        id: wiexoejxf34rh
+      type: object
+      properties:
+        id:
+          type: string
+        last4:
+          type: string
+        active:
+          type: boolean
+        itemId:
+          type: string
+        userId:
+          type: string
+        account:
+          type: string
+        logoUrl:
+          type: string
+        routing:
+          type: string
+        bankName:
+          type: string
+        unlinked:
+          type: boolean
+        accountId:
+          type: string
+        companyId:
+          type: string
+        ownerInfo:
+          $ref: '#/components/schemas/ApiFinancialInstitutionOwner'
+        accessToken:
+          type: string
+        accountName:
+          type: string
+        accountType:
+          type: string
+        officialName:
+          type: string
+        institutionId:
+          type: string
+        unitProcessorToken:
+          type: string
+        stripeBankAccountToken:
+          type: string
+        tenantId:
+          type: string
+      required:
+        - id
+        - last4
+        - active
+        - itemId
+        - userId
+        - account
+        - routing
+        - bankName
+        - unlinked
+        - accountId
+        - companyId
+        - accessToken
+        - accountName
+        - accountType
+        - officialName
+        - institutionId
+        - unitProcessorToken
+        - tenantId
+    ApiFinancialInstitutionOwner:
+      title: ApiFinancialInstitutionOwner
+      x-stoplight:
+        id: qv2ejzi0rt8c7
+      type: object
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: fidrx5hymt6d7
+        email:
+          type: string
+          x-stoplight:
+            id: 60asdicoc925g
+        phone:
+          type: string
+          x-stoplight:
+            id: iqkt3m7if5n1i
+        address:
+          $ref: '#/components/schemas/ApiFinancialInstitutionAddress'
+          x-stoplight:
+            id: n3osrk94lzhik
+      required:
+        - name
+        - email
+        - phone
+        - address
+    ApiFinancialInstitutionAddress:
+      title: ApiFinancialInstitutionAddress
+      x-stoplight:
+        id: iia2h2qeks6u7
+      type: object
+      properties:
+        line1:
+          type: string
+          x-stoplight:
+            id: mzaf1j7xa5ksr
+        city:
+          type: string
+          x-stoplight:
+            id: atfaimv7ryamo
+        state:
+          type: string
+          x-stoplight:
+            id: ai6qxma6r9tlk
+        postalCode:
+          type: string
+          x-stoplight:
+            id: 10gesi8xtxqze
+        country:
+          type: string
+          x-stoplight:
+            id: xthmzudklrszf
+      required:
+        - line1
+        - city
+        - state
+        - postalCode
+        - country
+    ApiOptedProduct:
+      title: ApiOptedProduct
+      x-stoplight:
+        id: t6o4wh3cas0zt
+      type: string
+      enum:
+        - BANKING
+        - CREDIT
+        - TREASURY
+        - INTERNATIONAL_PAYMENTS
+    ApiCompanyAutopay:
+      title: ApiCompanyAutopay
+      x-stoplight:
+        id: sqol38xwppi9j
+      type: object
+      properties:
+        when:
+          type: string
+          x-stoplight:
+            id: 1w4gfiienyxlv
+          enum:
+            - due
+            - utilization
+        plaidTokenId:
+          type: string
+          x-stoplight:
+            id: 6c8u01ritywpa
+        depositAccountId:
+          type: string
+          x-stoplight:
+            id: csp8bhozpmd3j
+        utilizationPct:
+          type: number
+          x-stoplight:
+            id: o1mkx99ep9fgr
+        payBalancePct:
+          type: number
+          x-stoplight:
+            id: jh9nx25qc6a92
+      required:
+        - when
+    ApiFrozenReason:
+      title: ApiFrozenReason
+      x-stoplight:
+        id: j3sjc8nsqy7tn
+      type: string
+      enum:
+        - plaidUnlinked
+        - plaidDropped
+        - accountDelinquent
+        - deniedBanking
+        - byServicer
+        - unknown
+    ApiBusinessVertical:
+      title: ApiBusinessVertical
+      x-stoplight:
+        id: 2xvevarh0hywd
+      type: string
+      enum:
+        - AgricultureForestryFishingOrHunting
+        - ArtsEntertainmentAndRecreation
+        - BusinessSupportOrBuildingServices
+        - Construction
+        - DirectMarketingOrTelemarketing
+        - EducationalServices
+        - FinancialServicesCryptocurrency
+        - FinancialServicesDebitCollectionOrConsolidation
+        - FinancialServicesMoneyServicesBusinessOrCurrencyExchange
+        - FinancialServicesOther
+        - FinancialServicesPaydayLending
+        - GamingOrGambling
+        - HealthCareAndSocialAssistance
+        - HospitalityAccommodationOrFoodServices
+        - LegalAccountingConsultingOrComputerProgramming
+        - Manufacturing
+        - Mining
+        - Nutraceuticals
+        - PersonalCareServices
+        - PublicAdministration
+        - RealEstate
+        - ReligiousCivicAndSocialOrganizations
+        - RepairAndMaintenance
+        - RetailTrade
+        - TechnologyMediaOrTelecom
+        - TransportationOrWarehousing
+        - Utilities
+        - WholesaleTrade
+        - AdultEntertainmentDatingOrEscortServices
+        - Cannabis
+    ApiEarlypay:
+      title: ApiEarlypay
+      x-stoplight:
+        id: gcpzwtzc1ea9m
+      type: object
+      properties:
+        dates:
+          type: array
+          x-stoplight:
+            id: 88499z59e2h0q
+          items:
+            x-stoplight:
+              id: 1s57avswial2g
+            type: number
+        graceDays:
+          type:
+            - string
+            - number
+        rebateDate:
+          type:
+            - string
+            - number
+        rebatePct:
+          type: string
+        plaidTokenId:
+          type: string
+        depositAccountId:
+          type: string
+        rebateCounterpartyId:
+          type: string
+    ApiCashback:
+      title: ApiCashback
+      x-stoplight:
+        id: eih8s9854u8h3
+      type: object
+      properties:
+        nearTermDays:
+          type:
+            - string
+            - number
+        nearTermPct:
+          type: string
+        farTermDays:
+          type:
+            - string
+            - number
+        farTermPct:
+          type: string
+        rebateDate:
+          type:
+            - string
+            - number
+    ApiSetLimitResponse:
+      title: ApiSetLimitResponse
+      x-stoplight:
+        id: ltx9f7rcue6yg
+      type: object
+      properties:
+        success:
+          type: boolean
+          x-stoplight:
+            id: 4qy65lbmjveke
+        company:
+          $ref: '#/components/schemas/ApiOnboardingCompany'
+          x-stoplight:
+            id: 2ibkk47spyczo
+      required:
+        - success
+        - company
+  securitySchemes:
+    token:
+      type: http
+      scheme: bearer
+      description: Bearer token
+  requestBodies:
+    LegacySetLimit:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LegacySetLimit'
+  responses:
+    LegacySetLimit:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiSetLimitResponse'
+security:
+  - token: []
+tags:
+  - name: Credit
+    description: Credit
+  - name: Legacy
+    description: Legacy

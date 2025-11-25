@@ -1,0 +1,19 @@
+description: Properties that are allowed to be edited on existing phones
+type: object
+properties:
+  type:
+    type: string
+    description: A label indicating the phone's type
+    enum:
+      - work
+      - home
+      - mobile
+      - fax
+      - pager
+      - other
+  isPrimary:
+    type: boolean
+  active:
+    type: boolean
+  value:
+    type: string

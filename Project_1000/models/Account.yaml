@@ -1,0 +1,42 @@
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: The account identifier
+        x-stoplight:
+          id: uz6tahas3ph33
+        readOnly: true
+      tenantId:
+        type: string
+        format: uuid
+        description: The tenant identifier
+        readOnly: true
+      active:
+        type: boolean
+        description: A value indicating if the account is enabled in the system
+      name:
+        type: string
+        description: An optional name for the account
+        maxLength: 100
+      incomplete:
+        type: array
+        description: An array of incomplete account details
+        items:
+          type: string
+        readOnly: true
+      businessId:
+        type: string
+        x-stoplight:
+          id: w3yyewpgamhkm
+        format: uuid
+        description: The business identifier
+        readOnly: true
+    required:
+      - id
+      - tenantId
+      - active
+  - $ref: ./CoreModel.yaml
+description: Represents an account
+title: Account

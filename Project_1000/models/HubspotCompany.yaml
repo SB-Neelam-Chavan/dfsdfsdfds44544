@@ -1,0 +1,100 @@
+title: HubspotCompany
+x-stoplight:
+  id: kw05tc73pd1dd
+type: object
+description: Fields to be written from Flex to the Hubspot Company Entity
+properties:
+  id:
+    type: string
+    x-stoplight:
+      id: tdao189g1b3n0
+  flexCompanyId:
+    type: string
+    x-stoplight:
+      id: n9pxrxtskax32
+    format: uuid
+  availableCredit:
+    type: number
+    x-stoplight:
+      id: xe3bggtjrtbr3
+  creditBalance:
+    type: number
+    x-stoplight:
+      id: 34ousit9enh23
+  creditLimit:
+    type: number
+    x-stoplight:
+      id: 647z1855ltiik
+  lithicId:
+    type: string
+    x-stoplight:
+      id: 453c31nmhanht
+    format: uuid
+  unitId:
+    type: string
+    x-stoplight:
+      id: 6ckukywuxg97m
+    format: uuid
+  bankDeposits:
+    type: number
+    x-stoplight:
+      id: ca87fkxymenls
+  creditCashbackRebateBalance:
+    type: number
+    x-stoplight:
+      id: r6fyww42xyeu1
+  creditCashbackNearTermDays:
+    type: number
+    x-stoplight:
+      id: 978llllxj6v05
+  creditCashbackFarTermDays:
+    type: number
+    x-stoplight:
+      id: 5fllik6ucug7g
+  creditCashbackNearTermPct:
+    type: number
+    x-stoplight:
+      id: e2sn9ixpyfh8h
+  creditCashbackFarTermPct:
+    type: number
+    x-stoplight:
+      id: jfcxiqzdfvju7
+  customerStartDate:
+    type: string
+    x-stoplight:
+      id: 0222j3s6k74r4
+    format: date
+  creditLineApproved:
+    type: string
+    x-stoplight:
+      id: 2jgacpxas7cbd
+    format: date-time
+  monthlySpend:
+    type: number
+    x-stoplight:
+      id: 2pwr58g965ccn
+  firstTransactionDate:
+    type: string
+    x-stoplight:
+      id: 6jvd8shbnl44e
+    format: date-time
+  creditUtilization:
+    type: number
+    x-stoplight:
+      id: lpi9gwbo7pc49
+  annualRevenue:
+    type: string
+    x-stoplight:
+      id: 9f6mcwoeghn37
+  alfredUrl:
+    type: string
+    x-stoplight:
+      id: zes3t56ll616k
+  foundedYear:
+    type: string
+    x-stoplight:
+      id: ysrtf4j9n3o5o
+  dbaName:
+    type: string
+    x-stoplight:
+      id: zw89rvcwgscud

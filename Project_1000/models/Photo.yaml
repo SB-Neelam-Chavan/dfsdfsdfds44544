@@ -1,0 +1,32 @@
+title: Photo
+x-stoplight:
+  id: hz02mztygn66r
+type: object
+description: Represents a photo
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Photo identifier
+    readOnly: true
+  value:
+    type: string
+    description: URL of the photo
+    format: uri
+  type:
+    type: string
+    description: A label indicating the photo type
+    enum:
+      - thumbnail
+      - photo
+  primary:
+    type: boolean
+    description: Indicates if this is the preferred photo or thumbnail
+  display:
+    type: string
+    description: 'A human-readable name, primarily used for display purposes.'
+required:
+  - id
+  - value
+  - type
+  - primary

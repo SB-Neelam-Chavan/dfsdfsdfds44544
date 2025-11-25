@@ -1,0 +1,86 @@
+title: BankingDepositAccount
+x-stoplight:
+  id: q9qcfy78as2wn
+type: object
+description: 'Banking Deposit Account; stubbed from Unit Co Docs - https://github.com/unit-finance/openapi-unit-sdk/tree/main'
+properties:
+  id:
+    type: string
+  type:
+    type: string
+    enum:
+      - depositAccount
+  createdAt:
+    type: string
+    format: date-time
+  name:
+    type: string
+  depositProduct:
+    type: string
+  routingNumber:
+    type: string
+  accountNumber:
+    type: string
+  secondaryAccountNumber:
+    type: object
+    properties:
+      routingNumber:
+        type: string
+      accountNumber:
+        type: string
+    required:
+      - routingNumber
+      - accountNumber
+  currency:
+    type: string
+  balance:
+    type: integer
+  overdraftLimit:
+    type: integer
+    minimum: 0
+  hold:
+    type: integer
+  available:
+    type: integer
+  status:
+    enum:
+      - Open
+      - Closed
+      - Frozen
+  closeReason:
+    type: string
+    enum:
+      - ByCustomer
+      - Fraud
+      - NegativeBalance
+      - ByBank
+      - BreachOfTermsAndConditions
+      - NoAccountActivity
+      - ProgramChange
+  fraudReason:
+    type: string
+    enum:
+      - ACHActivity
+      - CardActivity
+      - CheckActivity
+      - ApplicationHistory
+      - AccountActivity
+      - ClientIdentified
+      - IdentityTheft
+      - LinkedToFraudulentCustomer
+  closeReasonText:
+    type: string
+    maxLength: 255
+  freezeReason:
+    type: string
+  maskedAccountNumber:
+    type: string
+  isOverdrawnWithinLimit:
+    type: boolean
+  dacaStatus:
+    enum:
+      - Activated
+      - Entered
+  updatedAt:
+    type: string
+    format: date-time

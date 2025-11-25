@@ -1,0 +1,12 @@
+x-stoplight:
+  id: 0i6gge4th9m64
+type: object
+properties:
+  value:
+    type: string
+  type:
+    type: string
+  isPrimary:
+    type: boolean
+  active:
+    type: boolean

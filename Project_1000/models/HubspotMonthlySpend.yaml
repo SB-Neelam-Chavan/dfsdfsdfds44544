@@ -1,0 +1,47 @@
+title: HubspotMonthlySpend
+x-stoplight:
+  id: mxejgqjfbo190
+type: object
+description: Fields to be written from Flex to the Hubspot Monthly Spend Entity
+properties:
+  id:
+    type: string
+    x-stoplight:
+      id: 1sdyzhiusscb3
+  flexCompanyId:
+    type: string
+    x-stoplight:
+      id: t1t5mb9nwvyi4
+    format: uuid
+  month:
+    type: string
+    x-stoplight:
+      id: a3f3yw9pflet4
+  creditLimit:
+    type: number
+    x-stoplight:
+      id: n7nuwsh97ybpa
+  monthlySpend:
+    type: number
+    x-stoplight:
+      id: 70rwwodb1w0sm
+  monthlyTotalRevenue:
+    type: number
+    x-stoplight:
+      id: p4h2ppe91c6s7
+  monthlyGmvInterchangeRevenue:
+    type: number
+    x-stoplight:
+      id: m1vdoz20y0lm6
+  monthlyDepositsNetYieldRevenue:
+    type: number
+    x-stoplight:
+      id: lxqvza5e34e5o
+  monthlyInsuranceRevenue:
+    type: number
+    x-stoplight:
+      id: 4j4t3o8pes5dr
+  creditUtilization:
+    type: number
+    x-stoplight:
+      id: 1rz8u2igrphym

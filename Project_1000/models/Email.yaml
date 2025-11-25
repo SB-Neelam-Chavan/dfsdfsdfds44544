@@ -1,0 +1,41 @@
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: Email identifier
+        readOnly: true
+      value:
+        type: string
+        description: Email address
+        format: email
+      type:
+        type: string
+        description: A label indicating the email's type
+        enum:
+          - work
+          - home
+          - other
+      isPrimary:
+        type: boolean
+        description: Indicates if this is the preferred email or primary email
+        default: true
+      verificationDate:
+        type: string
+        format: date-time
+        description: The date this email was verified
+        readOnly: true
+      verificationMethod:
+        type: string
+        description: The method used to verify this email
+        readOnly: true
+      active:
+        type: boolean
+        description: A value indicating if the email is enabled in the system
+    required:
+      - id
+      - value
+  - $ref: ./CoreModel.yaml
+title: Email
+description: Represents an email

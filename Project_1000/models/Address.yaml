@@ -1,0 +1,40 @@
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: Address identifier
+        readOnly: true
+      isPrimary:
+        type: boolean
+        description: Indicates if this is the preferred address or primary address
+        default: true
+      verificationDate:
+        type: string
+        format: date-time
+        description: The date this address was verified
+        readOnly: true
+      verificationMethod:
+        type: string
+        description: The method used to verify this address
+        readOnly: true
+      active:
+        type: boolean
+        description: A value indicating if the address is enabled in the system
+        default: true
+      type:
+        type: string
+        description: The address type assigned. can be a personal or business.
+        enum:
+          - home
+          - work
+          - other
+    required:
+      - id
+      - isPrimary
+      - active
+  - $ref: ./BasicAddress.yaml
+  - $ref: ./CoreModel.yaml
+description: Represents an address
+title: Address

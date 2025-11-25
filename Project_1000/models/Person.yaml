@@ -1,0 +1,62 @@
+title: Person
+x-stoplight:
+  id: x2vxdv2fob5rf
+type: object
+description: Represents a person
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Person identifier
+    readOnly: true
+  accountId:
+    type: string
+    format: uuid
+    description: Account identifier
+    readOnly: true
+  active:
+    type: boolean
+    description: A value indicating if the person is enabled in the system
+    readOnly: true
+  givenName:
+    type: string
+    x-stoplight:
+      id: jaqh6dwwyy1b7
+    description: 'The given name of the person, or first name in most Western languages (e.g., ''Barbara'' given the full name ''Ms. Barbara J Jensen, III'').'
+  familyName:
+    type: string
+    x-stoplight:
+      id: fokztja98w6ek
+    description: 'The family name of the person, or last name in most Western languages (e.g., ''Jensen'' given the full name ''Ms. Barbara J Jensen, III'').'
+  displayName:
+    type: string
+    description: 'The name of the person, suitable for display to end-users'
+  userType:
+    type: string
+    description: 'Used to identify the relationship between the organization and the person.  Typical values used might be ''Contractor'', ''Employee'', ''Intern'', ''Temp'', ''External'', and ''Unknown'', but any value may be used.'
+  preferredLanguage:
+    type: string
+    description: 'Indicates the person''s preferred written or spoken language.  Generally used for selecting a localized user interface; e.g., ''en_US'' specifies the language English and country US'
+  locale:
+    type: string
+    description: 'Used to indicate the person''s default location for purposes of localizing items such as currency, date time format, or numerical representations'
+  timezone:
+    type: string
+    description: 'The person''s time zone in the ''Olson'' time zone database format, e.g., ''America/Los_Angeles'''
+  dateOfBirth:
+    type: string
+    format: date
+    description: The person's date of birth
+    x-stoplight:
+      id: pjymk4qr1l86m
+  nationality:
+    type: string
+    description: The person's nationality
+  taxId:
+    type: string
+    description: The person's tax identifier
+    maxLength: 18
+required:
+  - id
+  - accountId
+  - active

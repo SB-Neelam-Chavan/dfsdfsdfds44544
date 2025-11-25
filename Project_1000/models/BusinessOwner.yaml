@@ -1,0 +1,22 @@
+allOf:
+  - type: object
+    properties:
+      personId:
+        type: string
+        format: uuid
+        readOnly: true
+      businessId:
+        type: string
+        format: uuid
+        readOnly: true
+      percentage:
+        type: number
+        maximum: 100
+        minimum: 0
+    required:
+      - personId
+      - businessId
+      - percentage
+  - $ref: ./CoreModel.yaml
+description: Represents a business owner
+title: ''

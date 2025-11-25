@@ -1,0 +1,373 @@
+openapi: 3.1.0
+x-stoplight:
+  id: tpi9h05z8luyb
+info:
+  title: Analytics
+  version: '1.0'
+  license:
+    url: 'https://opensource.org/licenses/MIT'
+    name: MIT
+  contact:
+    email: dataops@flex.one
+    name: Dataops
+    url: 'https://www.flex.one'
+  description: Endpoints for Analytics
+  summary: Analytics
+servers:
+  - url: 'http://localhost:3000'
+    description: Local
+  - url: 'https://platform.flexbase.dev'
+    description: Development
+  - url: 'https://platform.flex.one'
+    description: Production
+paths:
+  /analytics/scrape/flexApi/plaid/transferSweeps:
+    get:
+      summary: GET scrape plaid transfer sweeps
+      x-stoplight:
+        id: l66hjtc7mye9h
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-flex-api-plaid-transfer-sweeps
+      description: Endpoint to scrape and store data from /plaid/transferSweeps
+    parameters: []
+  /analytics/scrape/flexApi/lithic/treasury:
+    get:
+      summary: GET scrape lithic treasury
+      x-stoplight:
+        id: yjqofdbsdz7i3
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-flexApi-lithic-treasury
+      description: Endpoint to scrape and store data from /lithic/treasury
+  /analytics/scrape/flexApi/servicing/bookSummary:
+    get:
+      summary: GET scrape servicing book summary
+      x-stoplight:
+        id: 97eoz3fniampz
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-flexApi-servicing-bookSummary
+      description: Endpoint to scrape and store data from /servicing/bookSummary
+  /analytics/scrape/hubspot/account/users:
+    get:
+      summary: GET scrape Hubspot account users
+      x-stoplight:
+        id: 6b18s3b3wwtsg
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-account-users
+      description: Endpoint to scrape and store data for Flex's Hubspot account users
+  /analytics/scrape/hubspot/goals:
+    get:
+      summary: GET scrape Hubspot goals
+      x-stoplight:
+        id: p9faffi7cxpxs
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-goals
+      description: Endpoint to scrape and store data for Flex's Hubspot goals
+  /analytics/scrape/hubspot/companies:
+    get:
+      summary: GET scrape Hubspot companies
+      x-stoplight:
+        id: fp0euy7hl3cw1
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-companies
+      description: Endpoint to scrape and store data for Flex's Hubspot companies
+  /analytics/scrape/hubspot/contacts:
+    get:
+      summary: GET scrape Hubspot contacts
+      x-stoplight:
+        id: dq56p0aysup4v
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-contacts
+      description: Endpoint to scrape and store data for Flex's Hubspot contacts
+  /analytics/scrape/hubspot/deals:
+    get:
+      summary: GET scrape Hubspot deals
+      x-stoplight:
+        id: 2ure01qyzujb7
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-deals
+      description: Endpoint to scrape and store data for Flex's Hubspot deals
+  /analytics/scrape/hubspot/monthlySpend:
+    get:
+      summary: GET scrape Hubspot monthlySpend
+      x-stoplight:
+        id: je6gh7dcacl43
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-monthly-spend
+      description: Endpoint to scrape and store data for Flex's Hubspot monthlySpend
+  /analytics/scrape/hubspot/events:
+    get:
+      summary: GET scrape Hubspot events
+      x-stoplight:
+        id: 52tzlwcdaejt5
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-events
+      description: Endpoint to scrape and store data for Flex's Hubspot events
+  /analytics/scrape/hubspot/onboarding:
+    get:
+      summary: GET scrape Hubspot onboarding
+      x-stoplight:
+        id: py522p2dg2btc
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-onboarding
+      description: Endpoint to scrape and store data for Flex's Hubspot onboarding
+  /analytics/scrape/hubspot/accountManagement:
+    get:
+      summary: GET scrape Hubspot accountManagement
+      x-stoplight:
+        id: y7f8pdtz8ohoh
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-hubspot-account-management
+      description: Endpoint to scrape and store data for Flex's Hubspot accountManagement
+  '/analytics/scrape/banking/accounts/{bankAccountId}':
+    parameters:
+      - $ref: '#/components/parameters/bankAccountId'
+    get:
+      summary: Scrape a specific Flex Bank Account
+      x-stoplight:
+        id: xw7v73wm11qpl
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: OK
+      operationId: get-scrape-banking-account
+      description: Endpoint to scrape and store data for Flex's Card Funding Account
+components:
+  schemas:
+    ListMetricResult:
+      title: ListMetricResult
+      x-stoplight:
+        id: giltq3ge21jy8
+      type: object
+      description: 'For a given metric, result is a timeseries of that metric with accompanying metadata'
+      properties:
+        product:
+          type: string
+          x-stoplight:
+            id: qqelj3bcccxiy
+        metricKey:
+          type: string
+          x-stoplight:
+            id: v73072mhk3kid
+        dateAggregation:
+          type: string
+          x-stoplight:
+            id: o1nvxk4385bp1
+        history:
+          type: array
+          x-stoplight:
+            id: zd0fpsd9u6058
+          items:
+            $ref: '#/components/schemas/MetricHistory'
+            x-stoplight:
+              id: 8hgetns5trglp
+    MetricHistory:
+      title: MetricHistory
+      x-stoplight:
+        id: pmalwqi3xkzrc
+      type: object
+      properties:
+        date:
+          type: string
+          x-stoplight:
+            id: nl9l489kw6k7s
+          format: date
+        total:
+          type: number
+          x-stoplight:
+            id: 5pa3cptuoh9nc
+        count:
+          type: number
+          x-stoplight:
+            id: lwrob1hngsoyb
+        sum:
+          type: number
+          x-stoplight:
+            id: yxdai143u6co2
+        avg:
+          type: number
+          x-stoplight:
+            id: x8v0fdpdkqa6p
+        median:
+          type: number
+          x-stoplight:
+            id: 2yv708hnc3np8
+        min:
+          type: number
+          x-stoplight:
+            id: nuywaa9vs7nvv
+        max:
+          type: number
+          x-stoplight:
+            id: 9050ugyrm3hkj
+        dimensions:
+          type: string
+          x-stoplight:
+            id: skcnfyo9dqjhn
+      description: A single element of the timeseries in a Metric Result
+  responses:
+    AnalyticsMetric:
+      description: Metrics data with pagination metadata
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/components/schemas/ListMetricResult'
+                x-stoplight:
+                  id: 00ywoe9xn7le8
+              metadata:
+                $ref: ./models/PaginationMetadata.yaml
+                x-stoplight:
+                  id: na5h74qdkslu1
+  parameters:
+    bankAccountId:
+      name: bankAccountId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The bank account identifier
+    startDate:
+      name: startDate
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date
+      description: Minimum date to include in response
+    endDate:
+      name: endDate
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date
+      description: Maximum date to include in response
+    dateAggregation:
+      name: dateAggregation
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+          - year
+          - quarter
+          - month
+          - week
+          - day
+          - hour
+          - minute
+          - second
+        example: year
+      description: 'Unit of aggregation data across dates (daily, weekly, etc...)'
+    page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+      description: Which page of results to request
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+        exclusiveMinimum: 0
+      description: The number of resources returned per page
+    sort:
+      name: sort
+      in: query
+      schema:
+        type: string
+        enum:
+          - asc
+          - desc
+        default: asc
+      description: The sort order of results
+    sortDesc:
+      name: sort
+      in: query
+      schema:
+        type: string
+        enum:
+          - asc
+          - desc
+        default: desc
+      description: The sort order of results
+    nextToken:
+      name: nextToken
+      in: query
+      schema:
+        type: string
+      description: A token to retrieve the next set of results
+    metricKey:
+      name: metricKey
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Define which pre-defined metric to return; for analytics/metrics endpoints
+  securitySchemes:
+    token:
+      type: http
+      scheme: bearer
+      description: Bearer token
+security:
+  - token: []
+tags:
+  - name: Analytics
+    description: Analytics
